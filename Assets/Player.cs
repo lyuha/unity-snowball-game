@@ -56,6 +56,7 @@ public class Player : MonoBehaviour, IDamageable {
 	}
 
 	public bool TakeDamage(IDamage damage) {
+		Debug.Log ("Player damaged");
 		weight -= damage.GetDamageAmount();
 
 		if(weight <= 0 || weight >= 200) {

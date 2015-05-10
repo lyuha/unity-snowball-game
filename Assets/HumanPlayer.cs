@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class HumanPlayer : Player {
+public class HumanPlayer : Player, IDamageable {
 	bool isMouseDown = false;
 	float thrust;
 
@@ -33,6 +34,9 @@ public class HumanPlayer : Player {
 			thrust += thrustFactor * Time.deltaTime;
 			if(thrust > maxThrust) thrust = maxThrust;
 		}
+		
+		Text weightUI = GameObject.Find("/HUDCanvas/WeightUI/Weight").GetComponent<Text>();
+		weightUI.text = weight.ToString();
 	}
 
 	protected void FixedUpdate() {
@@ -45,5 +49,12 @@ public class HumanPlayer : Player {
 		
 		movement = movement.normalized * speedFactor * Time.fixedDeltaTime;
 		Move(movement);
+	}
+
+	public bool TakeDamage(IDamage damage) {
+		Debug.Log ("HumanPlayer damaged");
+		bool ret = base.TakeDamage(damage);
+
+		return ret;
 	}
 }
