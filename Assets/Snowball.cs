@@ -24,7 +24,8 @@ public class Snowball : MonoBehaviour, IDamage {
 			Hit ();
 			break;
 		default:
-			if(other.gameObject.GetComponent<IDamageable>().TakeDamage(this)) {
+			IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+			if(damageable != null && damageable.TakeDamage(this)) {
 				Hit();
 			}
 			break;

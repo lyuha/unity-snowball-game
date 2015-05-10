@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class HumanPlayer : Player {
-	bool isMoving = false;
 	bool isMouseDown = false;
 	float thrust;
 
@@ -13,7 +12,7 @@ public class HumanPlayer : Player {
 	}
 	
 	// Update is called once per frame
-	public void Update () {
+	protected void Update () {
 		base.Update();
 
 		float mouseX = Input.GetAxis("Mouse X");
@@ -36,7 +35,7 @@ public class HumanPlayer : Player {
 		}
 	}
 
-	public void FixedUpdate() {
+	protected void FixedUpdate() {
 		base.FixedUpdate();
 		
 		float moveHorizontal = Input.GetAxis("Horizontal");
