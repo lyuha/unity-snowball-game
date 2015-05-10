@@ -100,7 +100,7 @@ Rigidbody:
   m_GameObject: {fileID: 159892}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: .699999988
+  m_Drag: .5
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitAudio: {fileID: 8300000, guid: 234d61dad6956ca488d4e7980a72d72d, type: 3}
   damageAmount: 10
+  damageSource: {fileID: 0}
 --- !u!135 &13538796
 SphereCollider:
   m_ObjectHideFlags: 1

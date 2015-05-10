@@ -6,24 +6,27 @@ public class Player : MonoBehaviour, IDamageable {
 	public GameObject snowBall;
 	public float speedFactor = 6f;
 	public float thrustFactor = 20f;
-	public float maxThrust = 20f;
 	public float minThrust = 5f;
-	public float timeLimit = 30f;
+	public float maxThrust = 50f;
+	public float ballLifetime = 30f;
+	public float weightingDistance = 3f;
 	public int minWeight = 0;
 	public int maxWeight = 200;
 	public int weight = 100;
-	public int dealAmount = 10;
-	public AudioSource audioSource;
+	public int dealAmount = 5;
 
-	public GameObject model;
-	public GameObject shoothole;
-	public Rigidbody rigidbody;
+	protected AudioSource audioSource;
+	protected GameObject model;
+	protected GameObject shoothole;
+	protected Rigidbody rigidbody;
+	protected CharacterController characterController;
 	protected float movedDistance;
 
 	// Use this for initialization
 	protected void Start () {
 		model = transform.FindChild("Model").gameObject;
 		rigidbody = GetComponent<Rigidbody>();
+		characterController = GetComponent<CharacterController>();
 		audioSource = GetComponent<AudioSource>();
 
 		shoothole = transform.FindChild("Shoothole").gameObject;
@@ -34,7 +37,7 @@ public class Player : MonoBehaviour, IDamageable {
 	}
 
 	protected void FixedUpdate () {
-
+		Move(new Vector3(0f, -20f * Time.fixedDeltaTime, 0f));
 	}
 
 	public void RotateAim(float x, float y) {
@@ -44,17 +47,20 @@ public class Player : MonoBehaviour, IDamageable {
 
 	public void Move(Vector3 movement){
 		if(movement.magnitude != 0f) {
-			movedDistance += movement.magnitude;
-			if(movedDistance >= 5f) {
-				movedDistance = 0f;
+			if(movedDistance >= weightingDistance) {
+				movedDistance -= weightingDistance;
 				weight += 1;
 			}
 
-			rigidbody.MovePosition(transform.position + transform.TransformVector(movement));
+			//rigidbody.MovePosition(transform.position + transform.TransformVector(movement));
+			characterController.Move(transform.TransformVector(movement));
 			if(!audioSource.isPlaying) {
 				audioSource.clip = walkAudioClip;
 				audioSource.Play();
 			}
+
+			movement.y = 0f;
+			movedDistance += movement.magnitude;
 		}
 	}
 
@@ -62,11 +68,11 @@ public class Player : MonoBehaviour, IDamageable {
 		GameObject ball = Instantiate(snowBall, shoothole.transform.position, Quaternion.identity) as GameObject;
 		Snowball ballBehaviour = ball.GetComponent<Snowball>();
 
-		ballBehaviour.damageAmount = dealAmount * 2;
+		ballBehaviour.damageAmount = dealAmount * 4;
 		ballBehaviour.damageSource = this;
 		ball.gameObject.GetComponent<Rigidbody>().AddForce(shoothole.transform.forward * thrust, ForceMode.Impulse);
 
-		GameObject.Destroy(ball, timeLimit);
+		GameObject.Destroy(ball, ballLifetime);
 		TakeDamage(dealAmount);
 	}
 
