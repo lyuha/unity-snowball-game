@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Snowball : MonoBehaviour {
+public class Snowball : MonoBehaviour, IDamage {
 	public AudioClip hitAudio;
+	public int damageAmount = 10;
+
 	AudioSource audioSource;
 	GameObject sphere;
 
@@ -21,15 +23,28 @@ public class Snowball : MonoBehaviour {
 			GameObject.Destroy(other.gameObject);
 			Hit ();
 			break;
+		default:
+			if(other.gameObject.GetComponent<IDamageable>().TakeDamage(this)) {
+				Hit();
+			}
+			break;
 		}
 	}
 
 	void Hit() {
 		audioSource.clip = hitAudio;
 		audioSource.Play();
-		print(sphere.transform.position);
-		print(audioSource.minDistance);
-		print(audioSource.maxDistance);
+		//print(sphere.transform.position);
+		//print(audioSource.minDistance);
+		//print(audioSource.maxDistance);
 		GameObject.Destroy(sphere);
+	}
+
+	public GameObject GetDamageSource() {
+		return this.gameObject;
+	}
+
+	public int GetDamageAmount() {
+		return damageAmount;
 	}
 }
