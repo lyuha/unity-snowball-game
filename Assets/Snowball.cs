@@ -35,9 +35,6 @@ public class Snowball : MonoBehaviour, IDamage {
 	void Hit() {
 		audioSource.clip = hitAudio;
 		audioSource.Play();
-		//print(sphere.transform.position);
-		//print(audioSource.minDistance);
-		//print(audioSource.maxDistance);
 		GameObject.Destroy(sphere);
 	}
 

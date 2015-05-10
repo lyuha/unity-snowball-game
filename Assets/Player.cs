@@ -21,7 +21,7 @@ public class Player : MonoBehaviour, IDamageable {
 	protected void Start () {
 		model = transform.FindChild("Model").gameObject;
 		rigidbody = model.GetComponent<Rigidbody>();
-		shoothole = model.transform.FindChild("Shoothole").gameObject;
+		shoothole = transform.FindChild("Shoothole").gameObject;
 
 		audioSource = GetComponent<AudioSource>();
 	}
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour, IDamageable {
 
 	public void Move(Vector3 movement){
 		if(movement.magnitude != 0f) {
-			rigidbody.MovePosition(model.transform.position + model.transform.TransformVector(movement));
+			rigidbody.MovePosition(transform.position + transform.TransformVector(movement));
 			if(!audioSource.isPlaying) {
 				audioSource.clip = walkAudioClip;
 				audioSource.Play();
