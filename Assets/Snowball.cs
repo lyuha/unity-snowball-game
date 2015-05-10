@@ -4,6 +4,7 @@ using System.Collections;
 public class Snowball : MonoBehaviour, IDamage {
 	public AudioClip hitAudio;
 	public int damageAmount = 10;
+	public MonoBehaviour damageSource;
 
 	AudioSource audioSource;
 	GameObject sphere;
@@ -38,8 +39,8 @@ public class Snowball : MonoBehaviour, IDamage {
 		GameObject.Destroy(sphere);
 	}
 
-	public GameObject GetDamageSource() {
-		return this.gameObject;
+	public MonoBehaviour GetDamageSource() {
+		return damageSource;
 	}
 
 	public int GetDamageAmount() {

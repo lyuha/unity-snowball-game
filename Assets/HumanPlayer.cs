@@ -3,12 +3,18 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class HumanPlayer : Player, IDamageable {
+	GameObject hud;
+	Text weightText;
 	bool isMouseDown = false;
 	float thrust;
 
 	// Use this for initialization
 	protected void Start () {
 		base.Start();
+
+		hud = GameObject.Find("/HUDCanvas");
+		weightText = hud.transform.Find("WeightUI/Weight").gameObject.GetComponent<Text>() as Text;
+
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 	
@@ -35,8 +41,7 @@ public class HumanPlayer : Player, IDamageable {
 			if(thrust > maxThrust) thrust = maxThrust;
 		}
 		
-		Text weightUI = GameObject.Find("/HUDCanvas/WeightUI/Weight").GetComponent<Text>();
-		weightUI.text = weight.ToString();
+		weightText.text = weight.ToString();
 	}
 
 	protected void FixedUpdate() {
@@ -46,8 +51,8 @@ public class HumanPlayer : Player, IDamageable {
 		float moveVertical = Input.GetAxis ("Vertical");
 
 		Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
-		
 		movement = movement.normalized * speedFactor * Time.fixedDeltaTime;
+
 		Move(movement);
 	}
 

@@ -3,5 +3,5 @@ using System.Collections;
 
 public interface IDamage {
 	int GetDamageAmount();
-	GameObject GetDamageSource();
+	MonoBehaviour GetDamageSource();
 }
