@@ -20,10 +20,10 @@ public class Player : MonoBehaviour, IDamageable {
 	// Use this for initialization
 	protected void Start () {
 		model = transform.FindChild("Model").gameObject;
-		rigidbody = model.GetComponent<Rigidbody>();
-		shoothole = transform.FindChild("Shoothole").gameObject;
-
+		rigidbody = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
+
+		shoothole = transform.FindChild("Shoothole").gameObject;
 	}
 
 	// Update is called once per frame
