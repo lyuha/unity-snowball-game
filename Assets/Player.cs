@@ -81,10 +81,6 @@ public class Player : MonoBehaviour, IDamageable {
 
 	public void TakeDamage(int damage) {
 		weight -= damage;
-		
-		if(weight <= minWeight || weight >= maxWeight) {
-			Destroy(this.gameObject);
-		}
 	}
 
 	public bool TakeDamage(IDamage damage) {
