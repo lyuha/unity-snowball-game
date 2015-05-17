@@ -1,0 +1,3 @@
+﻿interface IAssaultable{
+	void assault();
+}

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+[RequireComponent (typeof(Rigidbody))]
 public class Player : MonoBehaviour, IDamageable {
 	public AudioClip walkAudioClip;
 	public GameObject snowBall;
@@ -18,14 +18,12 @@ public class Player : MonoBehaviour, IDamageable {
 	protected AudioSource audioSource;
 	protected GameObject model;
 	protected GameObject shoothole;
-	protected Rigidbody rigidbody;
 	protected CharacterController characterController;
 	protected float movedDistance;
 
 	// Use this for initialization
 	protected void Start () {
 		model = transform.FindChild("Model").gameObject;
-		rigidbody = GetComponent<Rigidbody>();
 		characterController = GetComponent<CharacterController>();
 		audioSource = GetComponent<AudioSource>();
 
