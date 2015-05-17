@@ -1,0 +1,4 @@
+﻿
+interface IRetreatable{
+	void retreat();
+}

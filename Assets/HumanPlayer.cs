@@ -9,7 +9,7 @@ public class HumanPlayer : Player, IDamageable {
 	float thrust;
 
 	// Use this for initialization
-	protected void Start () {
+	protected new void Start () {
 		base.Start();
 
 		hud = GameObject.Find("/HUDCanvas");
@@ -19,7 +19,7 @@ public class HumanPlayer : Player, IDamageable {
 	}
 	
 	// Update is called once per frame
-	protected void Update () {
+	protected new void Update () {
 		base.Update();
 
 		float mouseX = Input.GetAxis("Mouse X");
@@ -44,7 +44,7 @@ public class HumanPlayer : Player, IDamageable {
 		weightText.text = weight.ToString();
 	}
 
-	protected void FixedUpdate() {
+	protected new void FixedUpdate() {
 		base.FixedUpdate();
 		
 		float moveHorizontal = Input.GetAxis("Horizontal");
@@ -56,7 +56,7 @@ public class HumanPlayer : Player, IDamageable {
 		Move(movement);
 	}
 
-	public bool TakeDamage(IDamage damage) {
+	public new bool TakeDamage(IDamage damage) {
 		Debug.Log ("HumanPlayer damaged");
 		bool ret = base.TakeDamage(damage);
 

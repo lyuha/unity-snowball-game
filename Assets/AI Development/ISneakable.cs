@@ -1,0 +1,3 @@
+﻿interface ISneakable {
+	void sneak();
+}

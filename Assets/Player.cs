@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+[RequireComponent (typeof(Rigidbody))]
 public class Player : MonoBehaviour, IDamageable {
 	public AudioClip walkAudioClip;
 	public GameObject snowBall;
-	public float speedFactor = 6f;
+	public float speedFactor = 15f;
 	public float thrustFactor = 20f;
 	public float minThrust = 5f;
 	public float maxThrust = 50f;
@@ -18,14 +18,12 @@ public class Player : MonoBehaviour, IDamageable {
 	protected AudioSource audioSource;
 	protected GameObject model;
 	protected GameObject shoothole;
-	protected Rigidbody rigidbody;
 	protected CharacterController characterController;
 	protected float movedDistance;
 
 	// Use this for initialization
 	protected void Start () {
 		model = transform.FindChild("Model").gameObject;
-		rigidbody = GetComponent<Rigidbody>();
 		characterController = GetComponent<CharacterController>();
 		audioSource = GetComponent<AudioSource>();
 
@@ -37,6 +35,7 @@ public class Player : MonoBehaviour, IDamageable {
 		if(IsDead()) {
 			Destroy(this.gameObject);
 		}
+		ChangeSpeed();
 	}
 
 	protected void FixedUpdate () {
@@ -93,10 +92,14 @@ public class Player : MonoBehaviour, IDamageable {
 		return true;
 	}
 	
-	public bool IsDead() {
+	bool IsDead() {
 		if(this.weight <= minWeight || weight >= maxWeight) {
 			return true;
 		}
 		return false;
+	}
+	
+	void ChangeSpeed() {
+		speedFactor = 15 - (weight / 20);  
 	}
 }
