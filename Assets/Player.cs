@@ -34,6 +34,9 @@ public class Player : MonoBehaviour, IDamageable {
 
 	// Update is called once per frame
 	protected void Update () {
+		if(IsDead()) {
+			Destroy(this.gameObject);
+		}
 	}
 
 	protected void FixedUpdate () {
@@ -90,5 +93,12 @@ public class Player : MonoBehaviour, IDamageable {
 			TakeDamage(damage.GetDamageAmount());
 
 		return true;
+	}
+	
+	public bool IsDead() {
+		if(this.weight <= minWeight || weight >= maxWeight) {
+			return true;
+		}
+		return false;
 	}
 }
