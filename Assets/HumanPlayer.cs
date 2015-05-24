@@ -4,6 +4,8 @@ using System.Collections;
 
 public class HumanPlayer : Player, IDamageable {
 	GameObject hud;
+	Slider powerSlider;
+	Text angleText;
 	Text weightText;
 	bool isMouseDown = false;
 	float thrust;
@@ -14,6 +16,13 @@ public class HumanPlayer : Player, IDamageable {
 
 		hud = GameObject.Find("/HUDCanvas");
 		weightText = hud.transform.Find("WeightUI/Weight").gameObject.GetComponent<Text>() as Text;
+
+		angleText = hud.transform.Find("ShootingUI/Angle").gameObject.GetComponent<Text>() as Text;
+
+		powerSlider = hud.transform.Find("ShootingUI/PowerSlider").gameObject.GetComponent<Slider>() as Slider;
+		powerSlider.minValue = minThrust;
+		powerSlider.maxValue = maxThrust;
+		powerSlider.value = minThrust;
 
 		Cursor.lockState = CursorLockMode.Locked;
 	}
@@ -34,11 +43,13 @@ public class HumanPlayer : Player, IDamageable {
 		else if(Input.GetMouseButtonUp(0)) {
 			isMouseDown = false;
 			Shoot(thrust);
+			powerSlider.value = minThrust;
 		}
 		
 		if(isMouseDown) {
 			thrust += thrustFactor * Time.deltaTime;
 			if(thrust > maxThrust) thrust = maxThrust;
+			powerSlider.value = thrust;
 		}
 		
 		weightText.text = weight.ToString();
@@ -48,7 +59,7 @@ public class HumanPlayer : Player, IDamageable {
 		base.FixedUpdate();
 		
 		float moveHorizontal = Input.GetAxis("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+		float moveVertical = Input.GetAxis("Vertical");
 
 		Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
 		movement = movement.normalized * speedFactor * Time.fixedDeltaTime;
@@ -56,6 +67,11 @@ public class HumanPlayer : Player, IDamageable {
 		Move(movement);
 	}
 
+	public void RotateAim(float x, float y) {
+		base.RotateAim(x, y);
+		angleText.text = shoothole.transform.eulerAngles.x.ToString();
+	}
+	
 	public new bool TakeDamage(IDamage damage) {
 		Debug.Log ("HumanPlayer damaged");
 		bool ret = base.TakeDamage(damage);
