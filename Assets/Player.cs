@@ -103,7 +103,7 @@ public class Player : MonoBehaviour, IDamageable {
 		speedFactor = 15 - (weight / 20);  
 	}
 
-	float FindAngle (Vector3 fromVector, Vector3 toVector, Vector3 upVector) {
+	public float FindAngle (Vector3 fromVector, Vector3 toVector, Vector3 upVector) {
 		// If the vector the angle is being calculated to is 0...
 		if(toVector == Vector3.zero)
 			// ... the angle between them is 0.

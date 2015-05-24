@@ -52,7 +52,7 @@ public class ComputerAssaultPlayer : Player, IAssaultable {
 			// move
 		}
 		if(shouldFireSnowball == true) {
-			float angle = FindAngle(transform.forward, humanPlayer.transform, transform.up);
+			float angle = FindAngle(transform.forward, humanPlayer.transform.position, transform.up);
 			// lookat
 			// set shoothole "horizontal".
 
