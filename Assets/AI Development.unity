@@ -86,7 +86,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: .166666672
     manualCellSize: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: c1e2451e5f249ae48b57410f3110fbb0, type: 2}
 --- !u!1 &42372488
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,11 +313,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: f620884220cd4467d80a1d12acd93ec5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: .175999999
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f620884220cd4467d80a1d12acd93ec5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 11.8999996
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f620884220cd4467d80a1d12acd93ec5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -350,3 +350,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f620884220cd4467d80a1d12acd93ec5, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &2075062436 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: f620884220cd4467d80a1d12acd93ec5, type: 3}
+  m_PrefabInternal: {fileID: 2075062435}
+--- !u!1 &2075062437 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: f620884220cd4467d80a1d12acd93ec5, type: 3}
+  m_PrefabInternal: {fileID: 2075062435}
+--- !u!114 &2075062438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2075062436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dc95811d429764eb81fa46510e648a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldStopMoving: 0
+--- !u!135 &2075062439
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2075062436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: -.5, y: 1.13, z: -.349999994}
+--- !u!136 &2075062440
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2075062437}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: .5
+  m_Height: 2.41000009
+  m_Direction: 1
+  m_Center: {x: -.5, y: 1.13, z: -.349999994}

@@ -67,7 +67,7 @@ public class HumanPlayer : Player, IDamageable {
 		Move(movement);
 	}
 
-	public void RotateAim(float x, float y) {
+	public new void RotateAim(float x, float y) {
 		base.RotateAim(x, y);
 		angleText.text = shoothole.transform.eulerAngles.x.ToString();
 	}
