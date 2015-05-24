@@ -12,12 +12,12 @@ public class ComputerPlayerApproachLimit : MonoBehaviour {
 	//}
 
 	void OnTriggerEnter(Collider sphereCollider) {
-		if(sphereCollider.tag == "player")
+		if(sphereCollider.tag == "Player")
 			shouldStopMoving = true;
 	}
 
 	void OnTriggerExit(Collider sphereCollider) {
-		if(sphereCollider.tag == "player")
+		if(sphereCollider.tag == "Player")
 			shouldStopMoving = false;
 	}
 }

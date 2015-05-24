@@ -14,7 +14,7 @@ public class ComputerAssaultPlayer : Player, IAssaultable {
 	void Awake() {
 		limitChecker = GetComponentInParent<ComputerPlayerApproachLimit>();
 		router = GetComponent<NavMeshAgent>();
-		humanPlayer = GameObject.FindGameObjectWithTag("player");
+		humanPlayer = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	public void assault() {
@@ -31,7 +31,7 @@ public class ComputerAssaultPlayer : Player, IAssaultable {
 			// ... and if a raycast towards the player hits something...
 			if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit)) {
 				// ... and if the raycast hits the player...
-				if(hit.collider.tag == "player") {
+				if(hit.collider.tag == "Player") {
 					// ... the player is in sight.
 					shouldFireSnowball = true;
 					
@@ -49,8 +49,11 @@ public class ComputerAssaultPlayer : Player, IAssaultable {
 		assault();
 
 		if(limitChecker.shouldStopMoving == false) {
-			// move
-		}
+			router.destination = humanPlayer.transform.position;
+			router.speed = 5f;
+		} else
+			router.Stop();
+
 		if(shouldFireSnowball == true) {
 			float angle = FindAngle(transform.forward, humanPlayer.transform.position, transform.up);
 			// lookat
