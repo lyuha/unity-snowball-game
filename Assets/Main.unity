@@ -124,7 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400122, guid: 624c7e62279d0e442bcdef94a671cc4d, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400122, guid: 624c7e62279d0e442bcdef94a671cc4d, type: 3}
       propertyPath: m_LocalScale.x
@@ -1147,7 +1147,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22489722, guid: 360dfd0a42ade114c83a95249154837c, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 22489722, guid: 360dfd0a42ade114c83a95249154837c, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1360,7 +1360,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 429822, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11452182, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
       propertyPath: enamyAssault
@@ -1929,7 +1929,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 466572, guid: 08d00a76235bf2841aaea1113679b667, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08d00a76235bf2841aaea1113679b667, type: 2}
