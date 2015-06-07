@@ -32,7 +32,7 @@ public class ComputerAssaultPlayer : Player, IAssaultable {
 
 				// ... and if the raycast hits the player...
 				if(hit.collider.tag == "Player") {
-					router.updateRotation = false;
+					//router.updateRotation = false;
 					transform.Rotate(0, direction.sqrMagnitude, 0);
 					// ... the player is in sight.
 					shouldFireSnowball = true;
@@ -54,7 +54,7 @@ public class ComputerAssaultPlayer : Player, IAssaultable {
 			float angle = FindAngle(transform.forward, humanPlayer.transform.position, transform.up);
 			// lookat
 			// set shoothole "horizontal".
-			Shoot(.7f);
+			Shoot(minThrust);
 		}
 	}
 }
