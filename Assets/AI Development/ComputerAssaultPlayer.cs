@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public class ComputerAssaultPlayer : Player, IAssaultable {
+public class ComputerAssaultPlayer : ComputerPlayer, IAssaultable {
 
 	public float fieldOfView = 60f;
 
