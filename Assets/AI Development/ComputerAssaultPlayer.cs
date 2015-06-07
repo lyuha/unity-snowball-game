@@ -6,14 +6,12 @@ public class ComputerAssaultPlayer : Player, IAssaultable {
 	public float fieldOfView = 60f;
 
 	private bool shouldFireSnowball = false;
-
-	private ComputerPlayerApproachLimit limitChecker;
 	private NavMeshAgent router;
 	private GameObject humanPlayer;
 
 	void Awake() {
-		limitChecker = GetComponentInParent<ComputerPlayerApproachLimit>();
 		router = GetComponent<NavMeshAgent>();
+		//router.updateRotation = false;
 		humanPlayer = GameObject.FindGameObjectWithTag("Player");
 	}
 
@@ -29,36 +27,33 @@ public class ComputerAssaultPlayer : Player, IAssaultable {
 			RaycastHit hit;
 			
 			// ... and if a raycast towards the player hits something...
-			if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit)) {
+			Debug.DrawRay(transform.position + transform.forward, direction.normalized, Color.red);
+			if(Physics.Raycast(transform.position + transform.forward, direction.normalized, out hit)) {
+
 				// ... and if the raycast hits the player...
 				if(hit.collider.tag == "Player") {
+					router.updateRotation = false;
+					transform.Rotate(0, direction.sqrMagnitude, 0);
 					// ... the player is in sight.
 					shouldFireSnowball = true;
-					
 					// Set the last global sighting is the players current position.
 					//lastPlayerSighting.position = player.transform.position;
 				}
 			}
+
 		}
 
 	}
-
 	new void Update() {
 		base.Update();
-
+		router.destination = humanPlayer.transform.position;
+		router.speed = 5f;
 		assault();
-
-		if(limitChecker.shouldStopMoving == false) {
-			router.destination = humanPlayer.transform.position;
-			router.speed = 5f;
-		} else
-			router.Stop();
 
 		if(shouldFireSnowball == true) {
 			float angle = FindAngle(transform.forward, humanPlayer.transform.position, transform.up);
 			// lookat
 			// set shoothole "horizontal".
-
 			Shoot(.7f);
 		}
 	}
