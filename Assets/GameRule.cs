@@ -30,8 +30,10 @@ public class GameRule : MonoBehaviour {
 		currentTime = endTime - Time.time; 
 		minutes = (int)currentTime / 60;
 		second = (int)currentTime % 60;
+		Debug.Log((int)((currentTime - (int)currentTime) * 100));
+		
 		millisecond = (int)((currentTime - (int)currentTime) * 100);
-		remainedTime.text = string.Format("{0} : {1} : {2}", minutes, second, millisecond); 
+		remainedTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", minutes, second, millisecond); 
 	}
 	
 	bool IsEnd() {
