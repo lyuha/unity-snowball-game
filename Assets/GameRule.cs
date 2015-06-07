@@ -11,15 +11,22 @@ public class GameRule : MonoBehaviour {
 	double endTime;
 	GameObject hud;
 	Text remainedTime;
+	Text scoreText;
+	int score;
 	
 	// Use this for initialization
 	void Start () {
+		this.score = 0;
 		hud = GameObject.Find("/HUDCanvas");
 		endTime = Time.time + playingDuration;
+		
 		remainedTime = hud.transform.Find("StatusUI/Time").gameObject.GetComponent<Text>() as Text;
 		remainedTime.text = playingDuration.ToString();
 
 		Invoke("SpawnEnemy", spawnInterval);
+
+		scoreText = hud.transform.Find("StatusUI/Score").gameObject.GetComponent<Text>() as Text;
+		scoreText.text = score.ToString();
 	}
 	
 	// Update is called once per frame
@@ -36,17 +43,18 @@ public class GameRule : MonoBehaviour {
 		currentTime = endTime - Time.time; 
 		minutes = (int)currentTime / 60;
 		second = (int)currentTime % 60;
-		//Debug.Log((int)((currentTime - (int)currentTime) * 100));
 		
 		millisecond = (int)((currentTime - (int)currentTime) * 100);
-		remainedTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", minutes, second, millisecond); 
+		remainedTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", minutes, second, millisecond);
+			
+		scoreText.text = score.ToString();	 
 	}
 	
 	bool IsEnd() {
 		if (endTime <= Time.time) {
 			return true;
 		}
-		return false;	
+		return false;
 	}
 
 	Transform PickRandomSpawnPoint() {
@@ -67,5 +75,8 @@ public class GameRule : MonoBehaviour {
 	
 	void AddComputerPlayer() {
 		
+	}
+	public void increaseScore() {
+		this.score++;
 	}
 }
