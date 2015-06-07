@@ -138,6 +138,44 @@ ModelImporter:
     100260: Mesh59
     100262: Mesh60
     100264: Mesh61
+    100266: ___1_1
+    100268: Component_2_41
+    100270: Component_2_42
+    100272: Component_2_43
+    100274: Component_2_44
+    100276: Component_2_45
+    100278: Component_2_46
+    100280: Component_2_47
+    100282: Component_2_48
+    100284: Component_2_49
+    100286: Component_2_50
+    100288: Component_2_51
+    100290: Component_2_52
+    100292: Component_2_53
+    100294: Component_2_54
+    100296: Component_2_55
+    100298: Component_2_56
+    100300: Component_2_57
+    100302: Component_2_58
+    100304: Component_2_59
+    100306: Component_2_60
+    100308: Component_3_11
+    100310: Component_3_12
+    100312: Component_3_13
+    100314: Component_3_14
+    100316: Component_3_15
+    100318: Mesh62
+    100320: Mesh63
+    100322: Mesh64
+    100324: Mesh65
+    100326: Mesh66
+    100328: Mesh67
+    100330: Mesh68
+    100332: Mesh69
+    100334: Mesh70
+    100336: Mesh71
+    100338: Mesh72
+    100340: Mesh73
     400000: Component_2_1
     400002: Component_2_10
     400004: Component_2_11
@@ -271,6 +309,44 @@ ModelImporter:
     400260: Mesh59
     400262: Mesh60
     400264: Mesh61
+    400266: ___1_1
+    400268: Component_2_41
+    400270: Component_2_42
+    400272: Component_2_43
+    400274: Component_2_44
+    400276: Component_2_45
+    400278: Component_2_46
+    400280: Component_2_47
+    400282: Component_2_48
+    400284: Component_2_49
+    400286: Component_2_50
+    400288: Component_2_51
+    400290: Component_2_52
+    400292: Component_2_53
+    400294: Component_2_54
+    400296: Component_2_55
+    400298: Component_2_56
+    400300: Component_2_57
+    400302: Component_2_58
+    400304: Component_2_59
+    400306: Component_2_60
+    400308: Component_3_11
+    400310: Component_3_12
+    400312: Component_3_13
+    400314: Component_3_14
+    400316: Component_3_15
+    400318: Mesh62
+    400320: Mesh63
+    400322: Mesh64
+    400324: Mesh65
+    400326: Mesh66
+    400328: Mesh67
+    400330: Mesh68
+    400332: Mesh69
+    400334: Mesh70
+    400336: Mesh71
+    400338: Mesh72
+    400340: Mesh73
     2300000: Mesh1
     2300002: Mesh10
     2300004: Mesh11
@@ -332,6 +408,18 @@ ModelImporter:
     2300116: Mesh59
     2300118: Mesh60
     2300120: Mesh61
+    2300122: Mesh62
+    2300124: Mesh63
+    2300126: Mesh64
+    2300128: Mesh65
+    2300130: Mesh66
+    2300132: Mesh67
+    2300134: Mesh68
+    2300136: Mesh69
+    2300138: Mesh70
+    2300140: Mesh71
+    2300142: Mesh72
+    2300144: Mesh73
     3300000: Mesh1
     3300002: Mesh10
     3300004: Mesh11
@@ -393,6 +481,18 @@ ModelImporter:
     3300116: Mesh59
     3300118: Mesh60
     3300120: Mesh61
+    3300122: Mesh62
+    3300124: Mesh63
+    3300126: Mesh64
+    3300128: Mesh65
+    3300130: Mesh66
+    3300132: Mesh67
+    3300134: Mesh68
+    3300136: Mesh69
+    3300138: Mesh70
+    3300140: Mesh71
+    3300142: Mesh72
+    3300144: Mesh73
     4300000: Mesh1
     4300002: Mesh2
     4300004: Mesh3
@@ -454,6 +554,18 @@ ModelImporter:
     4300116: Mesh59
     4300118: Mesh60
     4300120: Mesh61
+    4300122: Mesh62
+    4300124: Mesh63
+    4300126: Mesh64
+    4300128: Mesh65
+    4300130: Mesh66
+    4300132: Mesh67
+    4300134: Mesh68
+    4300136: Mesh69
+    4300138: Mesh70
+    4300140: Mesh71
+    4300142: Mesh72
+    4300144: Mesh73
     6400000: Mesh1
     6400002: Mesh10
     6400004: Mesh11
@@ -506,6 +618,27 @@ ModelImporter:
     6400098: Mesh7
     6400100: Mesh8
     6400102: Mesh9
+    6400104: Mesh53
+    6400106: Mesh54
+    6400108: Mesh55
+    6400110: Mesh56
+    6400112: Mesh57
+    6400114: Mesh58
+    6400116: Mesh59
+    6400118: Mesh60
+    6400120: Mesh61
+    6400122: Mesh62
+    6400124: Mesh63
+    6400126: Mesh64
+    6400128: Mesh65
+    6400130: Mesh66
+    6400132: Mesh67
+    6400134: Mesh68
+    6400136: Mesh69
+    6400138: Mesh70
+    6400140: Mesh71
+    6400142: Mesh72
+    6400144: Mesh73
   materials:
     importMaterials: 1
     materialName: 2
@@ -527,7 +660,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
