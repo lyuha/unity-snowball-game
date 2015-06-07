@@ -8,7 +8,7 @@ public class Player : MonoBehaviour, IDamageable {
 	public float thrustFactor = 20f;
 	public float minThrust = 5f;
 	public float maxThrust = 50f;
-	public float ballLifetime = 30f;
+	public float ballLifetime = 10f;
 	public float weightingDistance = 3f;
 	public int minWeight = 0;
 	public int maxWeight = 200;
@@ -75,6 +75,7 @@ public class Player : MonoBehaviour, IDamageable {
 		ballBehaviour.damageAmount = dealAmount * 4;
 		ballBehaviour.damageSource = this;
 		ball.gameObject.GetComponent<Rigidbody>().AddForce(shoothole.transform.forward * thrust, ForceMode.Impulse);
+		ball.gameObject.GetComponent<Rigidbody>().AddForce(characterController.velocity, ForceMode.VelocityChange);
 
 		GameObject.Destroy(ball, ballLifetime);
 		TakeDamage(dealAmount);
