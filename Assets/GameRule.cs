@@ -11,23 +11,32 @@ public class GameRule : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		endTime = Time.time + playingDuration;
 		hud = GameObject.Find("/HUDCanvas");
-		remainedTime = hud.transform.Find("Time").gameObject.GetComponent<Text>() as Text;
+		endTime = Time.time + playingDuration;
+		remainedTime = hud.transform.Find("StatusUI/Time").gameObject.GetComponent<Text>() as Text;
 		remainedTime.text = playingDuration.ToString();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		int minutes, second, millisecond;
+		double currentTime;
+		
 		if (this.IsEnd()) {
 			endTime = Time.time;
 			Destroy(GameObject.FindGameObjectWithTag("Player"));
 		}
-		remainedTime.text = ((int)(endTime - Time.time)).ToString();
+		
+		currentTime = endTime - Time.time; 
+		minutes = (int)currentTime / 60;
+		second = (int)currentTime % 60;
+		Debug.Log((int)((currentTime - (int)currentTime) * 100));
+		
+		millisecond = (int)((currentTime - (int)currentTime) * 100);
+		remainedTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", minutes, second, millisecond); 
 	}
 	
 	bool IsEnd() {
-		Debug.Log(string.Format("{0}, {1}", endTime, Time.time));
 		if (endTime <= Time.time) {
 			return true;
 		}
