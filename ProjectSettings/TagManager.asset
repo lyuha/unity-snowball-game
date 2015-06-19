@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - Hittable
+  - CoverSpot
   layers:
   - Default
   - TransparentFX

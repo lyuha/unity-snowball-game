@@ -66,7 +66,7 @@ public class GameRule : MonoBehaviour {
 
 	void SpawnEnemy() {
 		Transform place = PickRandomSpawnPoint();
-		GameObject ememy = Instantiate(enamyAssault, place.position, Quaternion.identity) as GameObject;
+		GameObject enemy = Instantiate(enamyAssault, place.position, Quaternion.identity) as GameObject;
 		Debug.Log("spawned at: " + place.position);
 
 		if(!IsEnd())
