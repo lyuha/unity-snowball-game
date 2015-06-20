@@ -47,25 +47,30 @@ public class Player : MonoBehaviour, IDamageable {
 		shoothole.transform.Rotate(y, 0, 0);
 	}
 
-	public void Move(Vector3 movement){
+	public void Move(Vector3 movement, bool isHumanPlayer) {
 		if(movedDistance >= weightingDistance) {
 			movedDistance -= weightingDistance;
 			weight += 1;
 		}
 		
 		//rigidbody.MovePosition(transform.position + transform.TransformVector(movement));
-		characterController.Move(transform.TransformVector(movement));
-
+		if(isHumanPlayer)
+			characterController.Move(transform.TransformVector(movement));
+		
 		// movement
 		movement.y = 0f;
 		movedDistance += movement.magnitude;
-
+		
 		if(movement.magnitude != 0f) {
 			if(!audioSource.isPlaying) {
 				audioSource.clip = walkAudioClip;
 				audioSource.Play();
 			}
 		}
+	}
+
+	public void Move(Vector3 movement){
+		Move (movement, true);
 	}
 
 	public void Shoot(float thrust) {

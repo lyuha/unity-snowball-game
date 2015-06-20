@@ -36,8 +36,12 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
         else
             assault();
 
+		router.destination = humanPlayer.transform.position;
 
+		Vector3 shortDestination = router.nextPosition - transform.position;
+		Move (shortDestination, false);
     }
+
     void checkHealth()
     {
         if (weight >= AssultHpThreshold)
