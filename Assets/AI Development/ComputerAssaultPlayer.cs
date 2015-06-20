@@ -70,7 +70,7 @@ public class ComputerAssaultPlayer : ComputerPlayer, IAssaultable {
     private IEnumerator launch()
     {
         readyToFire = false;
-        Shoot(minThrust);
+        Shoot((maxThrust + minThrust) / 2);
         yield return new WaitForSeconds(shootingInterval);
         readyToFire = true;
     }
