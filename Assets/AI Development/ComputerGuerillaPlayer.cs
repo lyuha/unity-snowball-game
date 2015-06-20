@@ -15,6 +15,8 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
     private GameObject[] hidingSpots;
     public float shootingInterval = 1f;
     private bool readyToFire = true;
+	private Vector3 previousPostion;
+	private ComputerPlayerApproachLimit approachLimit;
     void Awake()
     {
         router = GetComponent<NavMeshAgent>();
@@ -22,6 +24,8 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
         isRetreating = false;
         hidingSpots = GameObject.FindGameObjectsWithTag(Tags.CoverSpot);
         router.destination = humanPlayer.transform.position;
+		previousPostion = transform.position;
+		approachLimit = GetComponentInChildren<ComputerPlayerApproachLimit>();
     }
     new void Update()
     {
@@ -33,13 +37,21 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
         {
             retreat();
         }
-        else
-            assault();
+		else{
+			assault();
 
-		router.destination = humanPlayer.transform.position;
+			if(approachLimit.shouldStopMoving)
+				router.Stop();
+			else
+				router.Resume();
+		}
+            
+			
 
-		Vector3 shortDestination = router.nextPosition - transform.position;
-		Move (shortDestination, false);
+
+		Vector3 shortDestination = router.nextPosition - previousPostion;
+		Move (shortDestination.normalized, false);
+		previousPostion = router.nextPosition;
     }
 
     void checkHealth()
@@ -84,6 +96,8 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
 
         }
         transform.Rotate(0, angle * angularSpeed, 0);
+
+		router.destination = humanPlayer.transform.position;
 	}
 
 	public void sneak(){

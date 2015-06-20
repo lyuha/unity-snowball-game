@@ -1702,13 +1702,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkAudioClip: {fileID: 0}
-  snowBall: {fileID: 0}
+  snowBall: {fileID: 159892, guid: f940b69ed7e5cb146800c1c4af0f0921, type: 2}
   speedFactor: 15
   thrustFactor: 20
   minThrust: 5
   maxThrust: 50
   ballLifetime: 10
-  weightingDistance: 3
+  weightingDistance: 30
   minWeight: 0
   maxWeight: 200
   weight: 100
@@ -1727,10 +1727,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 103788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f7e3edc62d2b584eb399fc4f1634852, type: 3}
+  m_Script: {fileID: 11500000, guid: 066d9061964df97419ef989177fefc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldFlee: 0
+  shouldStopMoving: 0
 --- !u!135 &13526238
 SphereCollider:
   m_ObjectHideFlags: 1

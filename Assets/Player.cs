@@ -50,6 +50,7 @@ public class Player : MonoBehaviour, IDamageable {
 	public void Move(Vector3 movement, bool isHumanPlayer) {
 		if(movedDistance >= weightingDistance) {
 			movedDistance -= weightingDistance;
+
 			weight += 1;
 		}
 		
@@ -60,7 +61,12 @@ public class Player : MonoBehaviour, IDamageable {
 		// movement
 		movement.y = 0f;
 		movedDistance += movement.magnitude;
-		
+
+		/*if(!isHumanPlayer)
+		{
+			movedDistance *= 100;
+		}*/
+
 		if(movement.magnitude != 0f) {
 			if(!audioSource.isPlaying) {
 				audioSource.clip = walkAudioClip;
