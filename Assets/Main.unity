@@ -14,7 +14,7 @@ SceneSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: .875, g: .875, b: .875, a: 1}
   m_FogMode: 2
   m_FogDensity: .0399999991
@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: .211999997, g: .226999998, b: .259000003, a: 1}
   m_AmbientEquatorColor: {r: .114, g: .125, b: .133000001, a: 1}
   m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
-  m_AmbientIntensity: .734000027
+  m_AmbientIntensity: .702000022
   m_AmbientMode: 0
   m_SkyboxMaterial: {fileID: 2100000, guid: 9ddfc80724e105c4fb47106ab3c71873, type: 2}
   m_HaloStrength: .5
@@ -36,7 +36,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 554518772}
 --- !u!127 &3
 LevelGameManager:
   m_ObjectHideFlags: 0
@@ -44,7 +44,7 @@ LevelGameManager:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -53,8 +53,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 3
     m_Resolution: 2
@@ -68,7 +68,8 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-  m_LightmapSnapshot: {fileID: 0}
+  m_LightmapSnapshot: {fileID: 112000000, guid: 6470e0e022701704e8ed975f101a6abb,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
 NavMeshSettings:
@@ -124,7 +125,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400122, guid: 624c7e62279d0e442bcdef94a671cc4d, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400122, guid: 624c7e62279d0e442bcdef94a671cc4d, type: 3}
       propertyPath: m_LocalScale.x
@@ -1109,7 +1110,7 @@ Transform:
   - {fileID: 1521383354}
   - {fileID: 1894242333}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1001 &501821369
 Prefab:
   m_ObjectHideFlags: 0
@@ -1196,6 +1197,66 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 360dfd0a42ade114c83a95249154837c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &554518771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 554518773}
+  - 108: {fileID: 554518772}
+  m_Layer: 0
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &554518772
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 554518771}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: .0799999982
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: .0500000007
+    m_NormalBias: .400000006
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
+--- !u!4 &554518773
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 554518771}
+  m_LocalRotation: {x: -.408217967, y: .234569386, z: -.109381512, w: -.875426173}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &697561411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1267,7 @@ GameObject:
   - 4: {fileID: 697561412}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: CoverSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1369,7 +1430,7 @@ Prefab:
     - target: {fileID: 11452182, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
       propertyPath: enamyAssault
       value: 
-      objectReference: {fileID: 109014, guid: c6cd284a63f534a40ab04a0c4f79d3d6, type: 2}
+      objectReference: {fileID: 196528, guid: 8591c52dbe9eb9749927d2f1ba4abc69, type: 2}
     - target: {fileID: 11452182, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
       propertyPath: playingDuration
       value: 180
@@ -1449,7 +1510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1214071513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1594,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.233253, z: 1.01674676}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1242060160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,7 +1633,7 @@ GameObject:
   - 4: {fileID: 1499294215}
   m_Layer: 0
   m_Name: GameObject 2
-  m_TagString: Untagged
+  m_TagString: CoverSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1599,7 +1660,7 @@ GameObject:
   - 4: {fileID: 1521383354}
   m_Layer: 0
   m_Name: GameObject 4
-  m_TagString: Untagged
+  m_TagString: CoverSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1670,7 +1731,7 @@ Transform:
   - {fileID: 1039726930}
   - {fileID: 1242060161}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!82 &1575289026
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1767,7 +1828,7 @@ GameObject:
   - 4: {fileID: 1674230268}
   m_Layer: 0
   m_Name: GameObject 3
-  m_TagString: Untagged
+  m_TagString: CoverSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1864,7 +1925,7 @@ GameObject:
   - 4: {fileID: 1877870008}
   m_Layer: 0
   m_Name: GameObject 1
-  m_TagString: Untagged
+  m_TagString: CoverSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1891,7 +1952,7 @@ GameObject:
   - 4: {fileID: 1894242333}
   m_Layer: 0
   m_Name: GameObject 5
-  m_TagString: Untagged
+  m_TagString: CoverSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

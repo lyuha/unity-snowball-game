@@ -115,7 +115,7 @@ public class Player : MonoBehaviour, IDamageable {
 		return false;
 	}
 	
-	void ChangeSpeed() {
+	protected void ChangeSpeed() {
 		speedFactor = 15 - (weight / 20);  
 	}
 

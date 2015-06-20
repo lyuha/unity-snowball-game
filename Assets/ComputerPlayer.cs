@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class ComputerPlayer : Player {
-
+	void ChangeSpeed() {
+		base.ChangeSpeed();
+		GetComponent<NavMeshAgent>().speed = speedFactor;
+	}
 	
 	void OnDestroy() {
 		GameRule gameRule;
