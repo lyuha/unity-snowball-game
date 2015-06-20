@@ -15,6 +15,8 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
     private GameObject[] hidingSpots;
     public float shootingInterval = 1f;
     private bool readyToFire = true;
+	private Vector3 previousPostion;
+	private ComputerPlayerApproachLimit approachLimit;
     void Awake()
     {
         router = GetComponent<NavMeshAgent>();
@@ -22,28 +24,42 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
         isRetreating = false;
         hidingSpots = GameObject.FindGameObjectsWithTag(Tags.CoverSpot);
         router.destination = humanPlayer.transform.position;
+		previousPostion = transform.position;
+		approachLimit = GetComponentInChildren<ComputerPlayerApproachLimit>();
     }
     new void Update()
     {
         base.Update();
         checkHealth();
         if (isRetreating)
-            return;
-        if (weight <= RetreatHpThreshold)
         {
             retreat();
+			router.Resume();
         }
-        else
-            assault();
+		else{
+			assault();
+
+			if(approachLimit.shouldStopMoving)
+				router.Stop();
+			else
+				router.Resume();
+		}
+            
+			
 
 
+		Vector3 shortDestination = router.nextPosition - previousPostion;
+		Move (shortDestination.normalized, false);
+		previousPostion = router.nextPosition;
     }
+
     void checkHealth()
     {
         if (weight >= AssultHpThreshold)
         {
             isRetreating = false;
-        }
+		} else if (weight <= RetreatHpThreshold)
+			isRetreating = true;
     }
 	public void assault() {
 
@@ -80,6 +96,8 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
 
         }
         transform.Rotate(0, angle * angularSpeed, 0);
+
+		router.destination = humanPlayer.transform.position;
 	}
 
 	public void sneak(){
@@ -94,6 +112,7 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
         readyToFire = true;
     }
 	public void retreat(){
+		isRetreating = true;
         Vector3 defaultHidingPosDistance = hidingSpots[0].transform.position - transform.position;
         float sqrDistance = defaultHidingPosDistance.sqrMagnitude;
         foreach (GameObject hidingSpot in hidingSpots)

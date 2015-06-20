@@ -10,11 +10,12 @@ public class ComputerAssaultPlayer : ComputerPlayer, IAssaultable {
 	private bool readyToFire = true;
 	private NavMeshAgent router;
 	private GameObject humanPlayer;
-
+	private ComputerPlayerApproachLimit approachLimit;
 	void Awake() {
 		router = GetComponent<NavMeshAgent>();
 		//router.updateRotation = false;
 		humanPlayer = GameObject.FindGameObjectWithTag("Player");
+		approachLimit = GetComponentInChildren<ComputerPlayerApproachLimit>();
 	}
 	public void assault() {
 		
@@ -78,6 +79,10 @@ public class ComputerAssaultPlayer : ComputerPlayer, IAssaultable {
 		router.destination = humanPlayer.transform.position;
 		router.speed = 5f;
 		assault();
+		if(approachLimit.shouldStopMoving)
+			router.Stop();
+		else
+			router.Resume();
 
 		/*if(shouldFireSnowball == true) {
 			float angle = FindAngle(transform.forward, humanPlayer.transform.position, transform.up);

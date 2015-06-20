@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ComputerAssaultPlayerApproachLimit : MonoBehaviour {
+public class ComputerPlayerApproachLimit : MonoBehaviour {
 
 	public bool shouldStopMoving = false;
 
