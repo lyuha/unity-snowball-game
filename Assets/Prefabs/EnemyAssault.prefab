@@ -47,7 +47,7 @@ GameObject:
   - 114: {fileID: 11469164}
   m_Layer: 0
   m_Name: EnemyAssault
-  m_TagString: Hittable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1714,6 +1714,9 @@ MonoBehaviour:
   weight: 100
   dealAmount: 5
   fieldOfView: 120
+  angularSpeed: 5
+  shootingInterval: 1
+  shootingRange: 10
 --- !u!114 &11477486
 MonoBehaviour:
   m_ObjectHideFlags: 1

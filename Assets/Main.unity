@@ -1110,6 +1110,33 @@ Transform:
   - {fileID: 1894242333}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!1 &496618401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1900127717}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 496618402}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &496618402
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1900127717}
+  m_GameObject: {fileID: 496618401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1001 &501821369
 Prefab:
   m_ObjectHideFlags: 0
@@ -1365,7 +1392,7 @@ Prefab:
     - target: {fileID: 11452182, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
       propertyPath: enamyAssault
       value: 
-      objectReference: {fileID: 170462, guid: 08d00a76235bf2841aaea1113679b667, type: 2}
+      objectReference: {fileID: 109014, guid: c6cd284a63f534a40ab04a0c4f79d3d6, type: 2}
     - target: {fileID: 11452182, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
       propertyPath: playingDuration
       value: 180
@@ -1551,7 +1578,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1242060160}
-  m_LocalRotation: {x: -.258819073, y: 0, z: 0, w: .965925813}
+  m_LocalRotation: {x: .258818686, y: 0, z: 0, w: -.965925932}
   m_LocalPosition: {x: .5, y: .5, z: .75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

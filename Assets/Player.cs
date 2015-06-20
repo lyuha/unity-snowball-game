@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IDamageable {
 	public int minWeight = 0;
 	public int maxWeight = 200;
 	public int weight = 100;
-	public int dealAmount = 5;
+	public int dealAmount = -5;
 
 	protected AudioSource audioSource;
 	protected GameObject model;
@@ -78,11 +78,11 @@ public class Player : MonoBehaviour, IDamageable {
 		ball.gameObject.GetComponent<Rigidbody>().AddForce(characterController.velocity, ForceMode.VelocityChange);
 
 		GameObject.Destroy(ball, ballLifetime);
-		TakeDamage(dealAmount);
+		TakeDamage(-dealAmount);
 	}
 
 	public void TakeDamage(int damage) {
-		weight -= damage;
+		weight += damage;
 	}
 
 	public bool TakeDamage(IDamage damage) {
