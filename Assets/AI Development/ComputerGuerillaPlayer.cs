@@ -32,10 +32,9 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
         base.Update();
         checkHealth();
         if (isRetreating)
-            return;
-        if (weight <= RetreatHpThreshold)
         {
             retreat();
+			router.Resume();
         }
 		else{
 			assault();
@@ -59,7 +58,8 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
         if (weight >= AssultHpThreshold)
         {
             isRetreating = false;
-        }
+		} else if (weight <= RetreatHpThreshold)
+			isRetreating = true;
     }
 	public void assault() {
 
@@ -112,6 +112,7 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
         readyToFire = true;
     }
 	public void retreat(){
+		isRetreating = true;
         Vector3 defaultHidingPosDistance = hidingSpots[0].transform.position - transform.position;
         float sqrDistance = defaultHidingPosDistance.sqrMagnitude;
         foreach (GameObject hidingSpot in hidingSpots)
