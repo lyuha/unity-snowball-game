@@ -16,6 +16,7 @@ public class Player : MonoBehaviour, IDamageable {
 	public int dealAmount = -5;
 
 	protected AudioSource audioSource;
+	protected Transform playerBody;
 	protected GameObject model;
 	protected GameObject shoothole;
 	protected CharacterController characterController;
@@ -23,11 +24,13 @@ public class Player : MonoBehaviour, IDamageable {
 
 	// Use this for initialization
 	protected void Start () {
-		model = transform.FindChild("Model").gameObject;
+		//playerBody = transform.FindChild("PlayerBody");
+		playerBody = transform;
+		model = playerBody.FindChild("Model").gameObject;
 		characterController = GetComponent<CharacterController>();
 		audioSource = GetComponent<AudioSource>();
 
-		shoothole = transform.FindChild("Shoothole").gameObject;
+		shoothole = playerBody.FindChild("Shoothole").gameObject;
 	}
 
 	// Update is called once per frame
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour, IDamageable {
 			Destroy(this.gameObject);
 		}
 		ChangeSpeed();
+		ResizeBody(0.25f * weight / 100f + 0.75f);
 	}
 
 	protected void FixedUpdate () {
@@ -125,4 +129,7 @@ public class Player : MonoBehaviour, IDamageable {
 		return angle;
 	}
 
+	public void ResizeBody(float scale) {
+		model.transform.FindChild("instance_0").localScale = new Vector3(scale, scale, scale);
+	}
 }
