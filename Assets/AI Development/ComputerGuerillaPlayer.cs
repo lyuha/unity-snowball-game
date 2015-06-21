@@ -30,6 +30,8 @@ public class ComputerGuerillaPlayer : ComputerPlayer, IAssaultable, ISneakable, 
     new void Update()
     {
         base.Update();
+		if(humanPlayer == null)
+			return;
         checkHealth();
         if (isRetreating)
         {

@@ -20,6 +20,7 @@ public class ComputerAssaultPlayer : ComputerPlayer, IAssaultable {
 	public void assault() {
 		
 		// Create a vector from the enemy to the player and store the angle between it and forward.
+
 		Vector3 direction = humanPlayer.transform.position - transform.position;
         float angle = FindAngle(transform.forward, humanPlayer.transform.position - transform.position, transform.up);
 		
@@ -76,6 +77,8 @@ public class ComputerAssaultPlayer : ComputerPlayer, IAssaultable {
     }
 	new void Update() {
 		base.Update();
+		if(humanPlayer == null)
+			return;
 		router.destination = humanPlayer.transform.position;
 		router.speed = 5f;
 		assault();
