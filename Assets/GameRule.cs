@@ -5,6 +5,7 @@ using System.Collections;
 public class GameRule : MonoBehaviour {
 	public GameObject[] enamyPrefabs;
 	public double playingDuration = 60;
+	public int maxEnemy = 20;
 	float spawnInterval = 5f;
 
 	double startTime;
@@ -69,14 +70,21 @@ public class GameRule : MonoBehaviour {
 
 	void SpawnEnemy() {
 		Transform place = PickRandomSpawnPoint();
-		AddComputerPlayer(place, Random.Range(0, enamyPrefabs.Length));
+
+		Debug.Log (GetComputerPlayers().Length);
+		if(GetComputerPlayers().Length < maxEnemy)
+			AddComputerPlayer(place, Random.Range(0, enamyPrefabs.Length));
 
 		if(!IsEnd())
 			Invoke("SpawnEnemy", spawnInterval);
 	}
 
-	GameObject GetHumanPlayer() {
+	public GameObject GetHumanPlayer() {
 		return GameObject.Find("/HumanPlayer");
+	}
+
+	GameObject[] GetComputerPlayers() {
+		return GameObject.FindGameObjectsWithTag("Enemy");
 	}
 
 	public void AddComputerPlayer(Transform place, int type) {

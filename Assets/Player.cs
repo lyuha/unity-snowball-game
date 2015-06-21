@@ -102,6 +102,7 @@ public class Player : MonoBehaviour, IDamageable {
 
 	public bool TakeDamage(IDamage damage) {
 		Debug.Log ("Player damaged");
+		Debug.Log (this);
 		if(damage.GetDamageSource() != this)
 			TakeDamage(damage.GetDamageAmount());
 

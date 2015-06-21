@@ -32,7 +32,26 @@ public class Snowball : MonoBehaviour, IDamage {
 			break;
 		}
 	}
-
+	/*
+	void OnTriggerEnter (Collider other) {
+		Debug.Log (other);
+		switch(other.gameObject.tag) {
+		case "Terrain":
+			Hit ();
+			break;
+		case "Hittable":
+			GameObject.Destroy(other.gameObject);
+			Hit ();
+			break;
+		default:
+			IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+			if(damageable != null && damageable.TakeDamage(this)) {
+				Hit();
+			}
+			break;
+		}
+	}
+*/
 	void Hit() {
 		audioSource.clip = hitAudio;
 		audioSource.Play();

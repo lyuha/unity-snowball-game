@@ -1192,7 +1192,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22491102, guid: 360dfd0a42ade114c83a95249154837c, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 360dfd0a42ade114c83a95249154837c, type: 2}
@@ -1700,6 +1700,7 @@ GameObject:
   - 114: {fileID: 1575289024}
   - 82: {fileID: 1575289026}
   - 143: {fileID: 1575289028}
+  - 54: {fileID: 1575289027}
   m_Layer: 0
   m_Name: HumanPlayer
   m_TagString: Player
@@ -1736,7 +1737,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1575289023}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
   m_LocalPosition: {x: -1.23800004, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1.25, z: 1}
   m_Children:
@@ -1813,6 +1814,21 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!54 &1575289027
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1575289023}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!143 &1575289028
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1923,6 +1939,10 @@ Prefab:
     - target: {fileID: 400082, guid: 25e1705cba7716d44863d57dc67b4885, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100082, guid: 25e1705cba7716d44863d57dc67b4885, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25e1705cba7716d44863d57dc67b4885, type: 3}
