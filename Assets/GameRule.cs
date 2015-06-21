@@ -51,6 +51,7 @@ public class GameRule : MonoBehaviour {
 			if(hud.activeSelf == true) {
 				hud.SetActive(false);
 			}
+			gameOverUI.transform.FindChild("Score").GetComponent<Text>().text = "Score : " + this.score.ToString();
 			Cursor.lockState = CursorLockMode.Confined;
 		} else {
 			currentTime = endTime - Time.time; 
