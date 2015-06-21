@@ -23,8 +23,6 @@ public class HumanPlayer : Player, IDamageable {
 		powerSlider.minValue = minThrust;
 		powerSlider.maxValue = maxThrust;
 		powerSlider.value = minThrust;
-
-		Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame

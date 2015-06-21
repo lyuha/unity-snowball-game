@@ -14,6 +14,7 @@ public class GameRule : MonoBehaviour {
 	Text remainedTime;
 	Text scoreText;
 	int score;
+	GameObject gameOverUI;
 	
 	// Use this for initialization
 	void Start () {
@@ -25,9 +26,14 @@ public class GameRule : MonoBehaviour {
 		remainedTime.text = playingDuration.ToString();
 
 		Invoke("SpawnEnemy", spawnInterval);
-
+		
 		scoreText = hud.transform.Find("StatusUI/Score").gameObject.GetComponent<Text>() as Text;
-		scoreText.text = score.ToString();
+		scoreText.text = score.ToString() + " kill";
+		
+		gameOverUI = GameObject.Find("/GameOverUI");
+		gameOverUI.SetActive(false);
+		
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame
@@ -39,23 +45,30 @@ public class GameRule : MonoBehaviour {
 			endTime = Time.time;
 			Destroy(GameObject.FindGameObjectWithTag("Player"));
 			CancelInvoke("SpawnEnemy");
-		}
-		
-		currentTime = endTime - Time.time; 
-		minutes = (int)currentTime / 60;
-		second = (int)currentTime % 60;
-		
-		millisecond = (int)((currentTime - (int)currentTime) * 100);
-		remainedTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", minutes, second, millisecond);
+			if(gameOverUI.activeSelf == false) {
+				gameOverUI.SetActive(true);
+			}
+			if(hud.activeSelf == true) {
+				hud.SetActive(false);
+			}
+			Cursor.lockState = CursorLockMode.Confined;
+		} else {
+			currentTime = endTime - Time.time; 
+			minutes = (int)currentTime / 60;
+			second = (int)currentTime % 60;
 			
-		scoreText.text = score.ToString() + " kill";	 
+			millisecond = (int)((currentTime - (int)currentTime) * 100);
+			remainedTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", minutes, second, millisecond);
+				
+			scoreText.text = score.ToString() + " kill";
+		}	 
 	}
-	
+
 	bool IsEnd() {
 		if (endTime <= Time.time) {
 			return true;
 		}
-		if(null == GetHumanPlayer())
+		if(GetHumanPlayer() == null)
 			return true;
 
 		return false;
