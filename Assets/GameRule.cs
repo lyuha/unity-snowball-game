@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class GameRule : MonoBehaviour {
-	public GameObject enamyAssault;
+	public GameObject[] enamyPrefabs;
 	public double playingDuration = 60;
 	float spawnInterval = 5f;
 
@@ -54,6 +54,9 @@ public class GameRule : MonoBehaviour {
 		if (endTime <= Time.time) {
 			return true;
 		}
+		if(null == GetHumanPlayer())
+			return true;
+
 		return false;
 	}
 
@@ -61,21 +64,25 @@ public class GameRule : MonoBehaviour {
 		GameObject spawnPoints = GameObject.Find("/SpawnPoints");
 		Transform[] spawnPointList = spawnPoints.GetComponentsInChildren<Transform>();
 
-		return spawnPointList[Random.Range(0, spawnPointList.Length)];
+		return spawnPointList[Random.Range(1, spawnPointList.Length)];
 	}
 
 	void SpawnEnemy() {
 		Transform place = PickRandomSpawnPoint();
-		GameObject enemy = Instantiate(enamyAssault, place.position, Quaternion.identity) as GameObject;
-		Debug.Log("spawned at: " + place.position);
+		AddComputerPlayer(place, Random.Range(0, enamyPrefabs.Length));
 
 		if(!IsEnd())
 			Invoke("SpawnEnemy", spawnInterval);
 	}
-	
-	void AddComputerPlayer() {
-		
+
+	GameObject GetHumanPlayer() {
+		return GameObject.Find("/HumanPlayer");
 	}
+
+	public void AddComputerPlayer(Transform place, int type) {
+		GameObject enemy = Instantiate(enamyPrefabs[type], place.position, Quaternion.identity) as GameObject;		
+	}
+
 	public void increaseScore() {
 		this.score++;
 	}

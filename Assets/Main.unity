@@ -16,14 +16,14 @@ RenderSettings:
   serializedVersion: 6
   m_Fog: 1
   m_FogColor: {r: .875, g: .875, b: .875, a: 1}
-  m_FogMode: 2
+  m_FogMode: 3
   m_FogDensity: .0399999991
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: .211999997, g: .226999998, b: .259000003, a: 1}
+  m_AmbientSkyColor: {r: .874509871, g: .874509871, b: .874509871, a: 1}
   m_AmbientEquatorColor: {r: .114, g: .125, b: .133000001, a: 1}
   m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
-  m_AmbientIntensity: .702000022
+  m_AmbientIntensity: .823000014
   m_AmbientMode: 0
   m_SkyboxMaterial: {fileID: 2100000, guid: 9ddfc80724e105c4fb47106ab3c71873, type: 2}
   m_HaloStrength: .5
@@ -1357,8 +1357,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
-  far clip plane: 1000
+  near clip plane: 1.75
+  far clip plane: 125
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1395,6 +1395,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11452182, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
+      propertyPath: enamyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 429822, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1435,6 +1439,14 @@ Prefab:
       propertyPath: playingDuration
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 11452182, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
+      propertyPath: enamyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 109014, guid: c6cd284a63f534a40ab04a0c4f79d3d6, type: 2}
+    - target: {fileID: 11452182, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
+      propertyPath: enamyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 196528, guid: 8591c52dbe9eb9749927d2f1ba4abc69, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ddaa7f85c5764040b766268103d1abe, type: 2}
   m_IsPrefabParent: 0
@@ -1749,8 +1761,8 @@ AudioSource:
   Mute: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 2
-  MaxDistance: 500
+  MinDistance: 1
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
