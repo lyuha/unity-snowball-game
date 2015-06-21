@@ -48,7 +48,7 @@ public class GameRule : MonoBehaviour {
 		millisecond = (int)((currentTime - (int)currentTime) * 100);
 		remainedTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", minutes, second, millisecond);
 			
-		scoreText.text = score.ToString();	 
+		scoreText.text = score.ToString() + " kill";	 
 	}
 	
 	bool IsEnd() {
