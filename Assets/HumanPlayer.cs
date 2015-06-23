@@ -67,7 +67,7 @@ public class HumanPlayer : Player, IDamageable {
 
 	public new void RotateAim(float x, float y) {
 		base.RotateAim(x, y);
-		angleText.text = shoothole.transform.eulerAngles.x.ToString();
+		//angleText.text = (shoothole.transform.eulerAngles.x - 330).ToString();
 	}
 	
 	public new bool TakeDamage(IDamage damage) {
